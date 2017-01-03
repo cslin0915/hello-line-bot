@@ -28,7 +28,9 @@ dependencies {
     compile 'com.linecorp.bot:line-bot-spring-boot:1.5.0'
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-logging")
     compile("joda-time:joda-time:2.2")
+    compile("org.projectlombok:lombok:1.16.12")
     testCompile("junit:junit:4.11")
 }
 
@@ -36,3 +38,9 @@ jar {
     baseName = 'gs-gradle'
     version = '0.1.0'
 }
+
+// used to `bootRun -Dline.bot.channelToken=YOUR_CHANNEL_TOKEN -Dline.bot.channelSecret=YOUR_CHANNEL_SECRET`
+bootRun {
+    systemProperties System.properties
+}
+
