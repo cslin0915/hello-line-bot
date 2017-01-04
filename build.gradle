@@ -15,7 +15,7 @@ apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
-mainClassName = 'hello.Application'
+mainClassName = 'hello.HelloApplication'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
