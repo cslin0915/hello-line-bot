@@ -1,27 +1,40 @@
 Hello Line Bot
-===============
+==============
 
 Survey CheckList
 ----------------
 
 -	[x] 從零開始, 建立 Gradle 的 IntelljJ 專案, e.g., [Building Java Projects with Gradle](https://spring.io/guides/gs/gradle/)
 -	[x] 從零開始, 建立 Spring Boot 的 IntelljJ 專案, e.g., [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
--	[x] 從零開始, 建立簡易的 Line Bot, 只做訊息的回應, 並佈署到 Heroku
+-	[x] 從零開始, 建立簡易的 Line Bot, 只做訊息的回應 [Ref.](https://github.com/line/line-bot-sdk-java/tree/master/sample-spring-boot-echo), 並佈署到 Heroku [Ref.](https://devcenter.heroku.com/articles/getting-started-with-gradle-on-heroku)
 -	[x] 使用 ngrok 將 Line Bot 的執行佈署到本機
 -	[x] 測試 IntelljJ 的 Debug 模式是否可直接使用在 Line Bot 專案上
 -	[x] 測試 ngrok 提供的[封包檢視功能](http://localhost:4040/inspect/http)
--	[x] 查看執行 Line Bot 時, IntelliJ 的 Console 介面顯示的訊息有些什麼意義
--	[x] 測試 Group 裡是否也會 ECHO 其他使用者留的訊息
+-	[x] 查看執行 Line Bot 時, IntelliJ 的 Console 介面顯示的訊息有些什麼意義?
+
+	> 有紀錄對 Line API 操作的 Request 與 Response 封包訊息
+	>
+	> Request 封包的訊息範例 : `--> POST https://api.line.me/v2/bot/message/reply http/1.1 ...... --> END POST (285-byte body)`
+	>
+	> Response 封包的訊息範例 : `<-- 200 OK https://api.line.me/v2/bot/message/reply (80ms) ...... <-- END HTTP (2-byte body)`
+
+-	[x] 測試 Group 裡是否也會 ECHO 其他使用者留的訊息? 會, 但並無法知道使用者的 ID
+
 -	[x] 測試 Line Bot 如何藉由 RESTful API (GET) 主動送訊息給使用者
+
 -	[x] 測試如何將 log4j 或其他 logging framework 導入 Spring Boot 的程式中
--	[x] 測試 Line Bot 如何藉由 RESTful API (POST) 主動送訊息給使用者
+
+-	[x] 測試 Line Bot 如何藉由 RESTful API (POST) 主動送訊息給使用者? 使用 Spring Boot 建立 RESTful Web Service 接收 **訊息** 後, 再用 [Push message API](https://devdocs.line.me/en/?java#push-message) 丟訊息即可
+
 -	[x] Bot 加入 Group 後, 拿到的 Source 會是 Group 類型嗎? YES
+
 -	[x] 重構 HelloWorld 的 Line Bot, 當被加入群組時, 會顯示群組 ID
+
 -	[x] 測試 Messaging API 的各項功能
 
 	> RequestMapping 的 Annotation 可同時支援 GET 與 POST, 若使用 postman 做測試時, 除了 Body 使用 form-data 外, Header 也要加上 X-Application-Context=application
 
--	[x] 測試其他 Messaging API (LINE Bot) 並重構目前的 HelloWorld 程式
+-	[x] 測試其他 Messaging API 並重構目前的 HelloWorld 程式
 
 Our Scenario
 ------------
@@ -34,8 +47,8 @@ Our Scenario
 1.	[Webhooks](https://devdocs.line.me/en/?java#webhook-event-object)
 
 	-	When an event is triggered, an HTTPS POST request is sent to the webhook URL.
-	-	An event: a user adds your account or sends a message
-	-	The Webhook URL: e.g.,  
+	-	An Event : a user adds your account or sends a message
+	-	The Webhook URL : e.g.,  
 		https://dry-waters-48056.herokuapp.com/callback
 		-	A Sample Event:
 
@@ -60,7 +73,7 @@ Our Scenario
 	}
 	```
 
-	-	Join event: Event object for when your account joins a group or talk room.
+	-	A Join Event : Event object for when your account joins a group or talk room.
 		-	It conains the group's ID **source.groupId**.
 		-	A Sample Event:
 
@@ -79,9 +92,9 @@ Our Scenario
 2.	[Push message](https://devdocs.line.me/en/?java#push-message)
 
 	-	Send messages to users, groups, and rooms at any time.
-	-	Sample Codes:
-		-	**to**: the ID returned via the webhook event of the source user, group, or room as the ID of the receiver
-		-	**textMessage**: can be any of [send message objects](https://devdocs.line.me/en/?java#send-message-object)
+	-	Sample Codes :
+		-	**&lt;to&gt;** : the ID returned via the webhook event of the source user, group, or room as the ID of the receiver
+		-	**&lt;textMessage&gt;** : can be any of [send message objects](https://devdocs.line.me/en/?java#send-message-object)
 
 	```java
 	  TextMessage textMessage = new TextMessage("hello");
@@ -125,6 +138,7 @@ Code Examples
 -------------
 
 -	[sample-spring-boot-echo](https://github.com/line/line-bot-sdk-java/tree/master/sample-spring-boot-echo)
+-	[sample-spring-boot-kitchensink](https://github.com/line/line-bot-sdk-java/tree/master/sample-spring-boot-kitchensink)
 
 Other Techs
 -----------
@@ -188,7 +202,7 @@ Other Techs
 -	[Annotation Type Log4j](https://projectlombok.org/api/lombok/extern/log4j/Log4j.html)
 -	[Intellj:Cannot find symbol log...](http://stackoverflow.com/questions/14866765/building-with-lomboks-slf4j-and-intellij-cannot-find-symbol-log) -
 
-### New Terms
+### New Tech Terms
 
 -	the Tomcat servlet container
 -	bean
