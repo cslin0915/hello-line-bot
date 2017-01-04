@@ -26,12 +26,12 @@ repositories {
 
 dependencies {
     compile 'com.linecorp.bot:line-bot-spring-boot:1.5.0'
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile("org.springframework.boot:spring-boot-starter-logging")
-    compile("joda-time:joda-time:2.2")
-    compile("org.projectlombok:lombok:1.16.12")
-    testCompile("junit:junit:4.11")
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-logging'
+    compile 'joda-time:joda-time:2.2'
+    compile 'org.projectlombok:lombok:1.16.12'
+    testCompile 'junit:junit:4.11'
 }
 
 jar {
