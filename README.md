@@ -7,9 +7,19 @@ Survey CheckList
 -	[x] 從零開始, 建立 Gradle 的 IntelljJ 專案, e.g., [Building Java Projects with Gradle](https://spring.io/guides/gs/gradle/)
 -	[x] 從零開始, 建立 Spring Boot 的 IntelljJ 專案, e.g., [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 -	[x] 從零開始, 建立簡易的 Line Bot, 只做訊息的回應 [Ref.](https://github.com/line/line-bot-sdk-java/tree/master/sample-spring-boot-echo), 並佈署到 Heroku [Ref.](https://devcenter.heroku.com/articles/getting-started-with-gradle-on-heroku)
+
+	> Heroku 的 Settings > Config Variables 中需要有 LINE_BOT_CHANNEL_SECRET 與 LINE_BOT_CHANNEL_TOKEN 這兩個變數的設定
+
 -	[x] 使用 ngrok 將 Line Bot 的執行佈署到本機
--	[x] 測試 IntelljJ 的 Debug 模式是否可直接使用在 Line Bot 專案上
+
+	> 可使用 `./gradlew bootRun -Dline.bot.channelToken=YOUR_CHANNEL_TOKEN -Dline.bot.channelSecret=YOUR_CHANNEL_SECRET` 執行程式
+
+-	[x] 測試 IntelljJ 的 Debug 模式是否可直接使用在 Line Bot 專案上? 可以
+
 -	[x] 測試 ngrok 提供的[封包檢視功能](http://localhost:4040/inspect/http)
+
+	> 目前只看到由外部接收到的 Request 與對應的 Response 封包, 並沒看到自己對 Line API Server 發出的封包
+
 -	[x] 查看執行 Line Bot 時, IntelliJ 的 Console 介面顯示的訊息有些什麼意義?
 
 	> 有紀錄對 Line API 操作的 Request 與 Response 封包訊息
@@ -39,8 +49,8 @@ Survey CheckList
 Our Scenario
 ------------
 
-1.	Let a bot to join a group
-2.	Let the bot to send any message to the group
+1.	Let a bot join a group
+2.	Let the bot send any message to the group
 
 ### How to Achieve that Scenario
 
@@ -49,7 +59,7 @@ Our Scenario
 	-	When an event is triggered, an HTTPS POST request is sent to the webhook URL.
 	-	An Event : a user adds your account or sends a message
 	-	The Webhook URL : e.g.,  
-		https://dry-waters-48056.herokuapp.com/callback
+		https://&lt;YOUR_HEROKU_APP_NAME&gt;.herokuapp.com/callback
 		-	A Sample Event:
 
 	```json
@@ -73,7 +83,7 @@ Our Scenario
 	}
 	```
 
-	-	A Join Event : Event object for when your account joins a group or talk room.
+	-	A Join Event : your account joins a group or talk room.
 		-	It conains the group's ID **source.groupId**.
 		-	A Sample Event:
 
@@ -113,8 +123,8 @@ Our Scenario
 	  System.out.println(response.code() + " " + response.message());
 	```
 
-Official Sites
---------------
+Line Official Sites
+-------------------
 
 -	[Line Business Center](https://business.line.me/en/)
 -	[API References](https://devdocs.line.me/en/)
@@ -122,6 +132,7 @@ Official Sites
 -	[Line Admins](https://admin-official.line.me/)
 -	[Channels](https://developers.line.me/ba/)
 -	[Java SDK](https://github.com/line/line-bot-sdk-java)
+-	[FAQ](https://developers.line.me/faq#anc1-1)
 
 Online Tutorials
 ----------------
@@ -178,13 +189,17 @@ Other Techs
 
 	-	[Synchronizing Changes in Gradle Project and IntelliJ IDEA Project](https://www.jetbrains.com/help/idea/2016.2/synchronizing-changes-in-gradle-project-and-intellij-idea-project.html)
 
--	`build.gradle` 相關的設定說明:
+-	`build.gradle` 相關設定說明:
 
-	-	[sourceCompatibility and targetCompatibility](http://stackoverflow.com/questions/16654951/gradle-sourcecompatibility-vs-targetcompatibility)
+	-	[sourceCompatibility, targetCompatibility](http://stackoverflow.com/questions/16654951/gradle-sourcecompatibility-vs-targetcompatibility)
 	-	[buildscript](http://stackoverflow.com/questions/17773817/purpose-of-buildscript-in-gradle)
+	-	[systemProperties](https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_properties_and_system_properties)
+	-	[testCompile](https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html#sec:declaring_your_dependencies)
+	-	[jar](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html)
 
 ### Spring Boot
 
+-	[Spring 教學(1) - 從 Spring Boot 開始](http://peaceful-developer.logdown.com/posts/220887-spring-teaching-1-starting-from-spring-boot)
 -	[Working a Getting Started guide with IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
 -	[Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 
@@ -193,8 +208,8 @@ Other Techs
 -	[Official Site](https://ngrok.com/)
 -	[Official Document](https://ngrok.com/docs)
 -	使用方式:
-	1.	若 Spring Boot 執行的 Web 程式可用 `localhost:8080` 開始時, 則在 cmder 執行 `ngrok http 8080` 後, 便會有 `https://xxx.ngrok.io/` 外部網址可以使用
-	2.	可使用此網址 `http://localhost:4040/inspect/http` 查看對上述網址 Request 的封包
+	1.	若 Spring Boot 執行的 Web 程式可用 `localhost:8080` 開始時, 則在 cmder 執行 `ngrok http 8080` 後, 便會有 https://&lt;A_RANDOM_NAME&gt;.ngrok.io/ 外部網址可以使用
+	2.	可使用此網址 http://localhost:4040/inspect/http 查看對上述網址 Request 的封包
 
 ### lombok
 

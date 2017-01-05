@@ -3,6 +3,10 @@ package hello;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 /**
  * Package : hello
  * --
@@ -12,7 +16,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class HelloApplication {
-    public static void main(String[] args) {
+    static Path downloadedContentDir;
+    public static void main(String[] args) throws IOException {
+        downloadedContentDir = Files.createTempDirectory("line-bot");
         SpringApplication.run(HelloApplication.class, args);
     }
 }

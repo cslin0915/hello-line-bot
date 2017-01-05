@@ -17,6 +17,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class HelloWebMvcConfigurer extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        String downloadedContentUri = HelloApplication.downloadedContentDir.toUri().toASCIIString();
+        log.info("downloaded dir : {}", downloadedContentUri);
+        registry.addResourceHandler("/downloaded/**")
+                .addResourceLocations(downloadedContentUri);
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/");
     }
