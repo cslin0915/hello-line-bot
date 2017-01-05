@@ -222,11 +222,11 @@ public class HelloController {
 
         log.info("Got text message from {}: {}", replyToken, text);
         switch (text) {
-            case "readme": {
+            case "readme": case "0": {
                 this.replyText(replyToken, helpText);
                 break;
             }
-            case "profile": {
+            case "profile": case "1": {
                 String userId = event.getSource().getUserId();
                 if (userId != null) {
                     this.reply(replyToken, Arrays.asList(
@@ -238,7 +238,7 @@ public class HelloController {
                 }
                 break;
             }
-            case "bye": {
+            case "bye": case "2": {
                 Source source = event.getSource();
                 if (source instanceof GroupSource) {
                     this.replyText(replyToken, "Leaving group ...");
@@ -255,7 +255,7 @@ public class HelloController {
                 }
                 break;
             }
-            case "confirm": {
+            case "confirm": case "3": {
                 ConfirmTemplate confirmTemplate = new ConfirmTemplate(
                         "Do it?",
                         new MessageAction("Yes", "Yes!"),
@@ -268,7 +268,7 @@ public class HelloController {
                 this.reply(replyToken, templateMessage);
                 break;
             }
-            case "buttons": {
+            case "buttons": case "4": {
                 String imageUrl = createUri("/static/buttons/goodsmile.jpg");
                 ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
                         imageUrl,
@@ -290,7 +290,7 @@ public class HelloController {
                 this.reply(replyToken, templateMessage);
                 break;
             }
-            case "carousel": {
+            case "carousel": case "5" : {
                 String imageUrl1 = createUri("/static/buttons/figure1.jpg");
                 String imageUrl2 = createUri("/static/buttons/figure2.jpg");
                 String imageUrl3 = createUri("/static/buttons/figure3.jpg");
@@ -335,7 +335,7 @@ public class HelloController {
                 this.reply(replyToken, templateMessage);
                 break;
             }
-            case "imagemap": {
+            case "imagemap": case "6": {
                 this.reply(replyToken, new ImagemapMessage(
                         createUri("/static/rich"),
                         "This is alt text",
