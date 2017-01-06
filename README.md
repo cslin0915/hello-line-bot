@@ -215,7 +215,7 @@ Other Techs
 
 -	[Annotation Type Slf4j](https://projectlombok.org/api/lombok/extern/slf4j/Slf4j.html)
 -	[Annotation Type Log4j](https://projectlombok.org/api/lombok/extern/log4j/Log4j.html)
--	[Intellj:Cannot find symbol log...](http://stackoverflow.com/questions/14866765/building-with-lomboks-slf4j-and-intellij-cannot-find-symbol-log) -
+-	[Intellj:Cannot find symbol log...](http://stackoverflow.com/questions/14866765/building-with-lomboks-slf4j-and-intellij-cannot-find-symbol-log)
 
 ### New Tech Terms
 
