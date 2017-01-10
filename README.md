@@ -157,6 +157,7 @@ Other Techs
 ### Heroku
 
 -	[Heroku Dashboard](https://dashboard.heroku.com/)
+-	[Free Quota](https://www.heroku.com/policy/aup#quota)
 -	[Getting Started with Gradle on Heroku](https://devcenter.heroku.com/articles/getting-started-with-gradle-on-heroku)
 	-	Set up: `heroku login`
 	-	Prepare the app: `git clone ...`
