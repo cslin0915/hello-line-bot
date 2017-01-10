@@ -156,6 +156,7 @@ Other Techs
 
 ### Heroku
 
+-	[Homepage](https://www.heroku.com/home)
 -	[Heroku Dashboard](https://dashboard.heroku.com/)
 -	[Free Quota](https://www.heroku.com/policy/aup#quota)
 -	[Getting Started with Gradle on Heroku](https://devcenter.heroku.com/articles/getting-started-with-gradle-on-heroku)
