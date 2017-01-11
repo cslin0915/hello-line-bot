@@ -1,12 +1,15 @@
 group 'hello'
 version '1.0-SNAPSHOT'
 
+
 buildscript {
     repositories {
         mavenCentral()
+        maven { url 'http://files.boxfuse.com' }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+        classpath "com.boxfuse.client:boxfuse-gradle-plugin:1.24.1.1219"
     }
 }
 
@@ -14,6 +17,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'boxfuse'
 
 mainClassName = 'hello.HelloApplication'
 
