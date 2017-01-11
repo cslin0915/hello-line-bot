@@ -46,6 +46,10 @@ Survey CheckList
 
 -	[x] 測試其他 Messaging API 並重構目前的 HelloWorld 程式
 
+-	[x] 測試 AWS 的自動佈署 (Boxfuse)
+
+	> 在 Heroku 裡的 LINE_BOT_CHANNEL_TOKEN 與 LINE_BOT_CHANNEL_SECRET 兩個系統變數改設置在 src/main/resources/line-bot.properties 的設定檔中, 但 Boxfuse 的 EC2 佈署需要自行到 AWS 上設定 HTTPS 協定
+
 Our Scenario
 ------------
 
@@ -204,6 +208,7 @@ Other Techs
 -	[Spring 教學(1) - 從 Spring Boot 開始](http://peaceful-developer.logdown.com/posts/220887-spring-teaching-1-starting-from-spring-boot)
 -	[Working a Getting Started guide with IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
 -	[Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
+-	[Spring Boot @ConfigurationProperties example](http://www.mkyong.com/spring-boot/spring-boot-configurationproperties-example/)
 
 ### ngrok
 
@@ -218,6 +223,33 @@ Other Techs
 -	[Annotation Type Slf4j](https://projectlombok.org/api/lombok/extern/slf4j/Slf4j.html)
 -	[Annotation Type Log4j](https://projectlombok.org/api/lombok/extern/log4j/Log4j.html)
 -	[Intellj:Cannot find symbol log...](http://stackoverflow.com/questions/14866765/building-with-lomboks-slf4j-and-intellij-cannot-find-symbol-log)
+
+### Boxfuse
+
+-	[Homepage](https://boxfuse.com/)
+-	[Deploy Grails Apps effortlessly to AWS with Gradle](https://boxfuse.com/blog/grails-aws)
+-	[Get Started with Boxfuse & Spring Boot](https://boxfuse.com/getstarted/springboot)
+-	[Gradle Plugin](https://boxfuse.com/blog/gradle-plugin)
+-	build.gradle 需要新增的程式碼:
+
+	```
+	buildscript {
+	    repositories {
+	        maven { url 'http://files.boxfuse.com' }
+	    }
+	    dependencies {
+	        classpath "com.boxfuse.client:boxfuse-gradle-plugin:1.24.1.1219"
+	    }
+	}
+	apply plugin: 'boxfuse'
+	```
+
+-	Gradle 執行的指令:
+
+	```
+	build boxfuseRun -info
+	build boxfuseRun -Dboxfuse.env=prod -i
+	```
 
 ### New Tech Terms
 
