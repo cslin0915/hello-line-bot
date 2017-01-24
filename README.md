@@ -130,6 +130,7 @@ Our Scenario
 Line Official Sites
 -------------------
 
+-	[Messaging API](https://developers.line.me/messaging-api/overview)
 -	[Line Business Center](https://business.line.me/en/)
 -	[API References](https://devdocs.line.me/en/)
 -	[Line Developers](https://developers.line.me)
